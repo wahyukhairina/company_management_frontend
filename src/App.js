@@ -1,12 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Home from './components/Home'
+import Details from './components/Details'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-     <div>HAHAHAHA</div>
-    </div>
+    <>
+      <Provider store={store}>
+        <Router>
+          <Route path='/' component={Home} />
+          <Route path='/details' component={Details} />
+        </Router>
+      </Provider>
+    </>
   );
 }
 
