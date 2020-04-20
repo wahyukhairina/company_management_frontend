@@ -11,7 +11,6 @@ export const getCompany = () => {
 }
 
 export const postCompany = (data) => {
-    console.log('data', data)
   return {
     type: 'POST_COMPANY',
     payload: axios.post(`${process.env.REACT_APP_API_URL}/company`, data)

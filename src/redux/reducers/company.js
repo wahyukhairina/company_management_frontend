@@ -2,7 +2,7 @@ const initialState = {
     company: []
   }
   
-  const category = (state = initialState, action) => {
+  const company = (state = initialState, action) => {
     switch (action.type) {
       case 'GET_COMPANY_PENDING':
         return {
@@ -15,7 +15,7 @@ const initialState = {
       case 'GET_COMPANY_FULFILLED':
         return {
           ...state,
-          category: action.payload.data
+          company: action.payload.data.result
         }
       case 'POST_COMPANY_PENDING':
         return {
@@ -28,7 +28,7 @@ const initialState = {
       case 'POST_COMPANY_FULFILLED':
         return {
           ...state,
-          category: action.payload.data.result
+          company: action.payload.data.result
         }
       case 'DELETE_COMPANY_PENDING':
         return {
@@ -43,11 +43,11 @@ const initialState = {
         return {
           ...state,
           isLoading: false,
-          category: action.payload.data.result
+          company: action.payload.data.result
         }
       default:
         return state
     }
   }
   
-  export default category
+  export default company
