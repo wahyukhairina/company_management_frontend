@@ -1,3 +1,6 @@
+.card.companies{
+    width: 100%;
+}
 label{
     font-weight: bold;
     margin: 0;
@@ -17,6 +20,11 @@ label{
 .card-title{
     margin: 0;
 }
+.button-back{
+    border: 0;
+    background-color:lightgrey;
+    padding: 5px;
+}
 .cross-button{
     border: 0;
 }
@@ -34,15 +42,7 @@ label{
 .detail{
     margin-top: 5px;
 }
-.form-button{
-    display: flex;
-    justify-content: center;
-}
 .button{
     background-color: lightgray;
     border: 0;
-}
-.button.create{
-    padding: 5px;
-    width: 15rem;
 }

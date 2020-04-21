@@ -12,7 +12,7 @@ const CompanyList = ({ company, dispatch, history }) => {
 
     return (
         <div className='col-md-4 companies' key={company.id}>
-            <div className="card companies">
+            <div className="card">
                 <div className="card-header">
                 <Link to={{
                     pathname: '/details',
@@ -20,7 +20,7 @@ const CompanyList = ({ company, dispatch, history }) => {
                         id: company.id
                     }
                 }} ><h5 className="card-title">{company.name}</h5></Link>
-                <button onClick={() => onDelete (company.id)}> <img className="cross-icon" src={cross} alt='delete' /></button> 
+                <button className="cross-button" onClick={() => onDelete (company.id)}> <img className="cross-icon" src={cross} alt='delete' /></button> 
                 </div>
                 <div className="card-body">
                 <div className="detail">

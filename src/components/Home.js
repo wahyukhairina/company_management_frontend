@@ -43,11 +43,11 @@ class Home extends Component {
         event.preventDefault()
         event.target.reset()
         const data = {
-            id_company : this.state.id_company,
-            name : this.state.office_name,
-            start_date : this.state.start,
-            latitude : this.state.latitude,
-            longitude : this.state.longitude,
+            id_company: this.state.id_company,
+            name: this.state.office_name,
+            start_date: this.state.start,
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
         }
         await this.props.dispatch(postOffice(data))
     }
@@ -106,27 +106,31 @@ class Home extends Component {
                                 <form onSubmit={this.onSubmitOffice} >
                                     <div class="form-group">
                                         <label>Name :</label>
-                                        <input type="text" class="form-control" id="office_name" name='office_name' placeholder="office name" onChange={this.onChangeValue}/>
+                                        <input type="text" class="form-control" id="office_name" name='office_name' placeholder="office name" onChange={this.onChangeValue} />
                                     </div>
                                     <div class="form-group">
                                         <label>Location :</label>
                                         <div className='row'>
-                                            <div className='col-md-6'><input type="text" class="form-control" id="longitude" name='longitude' placeholder="longitude" onChange={this.onChangeValue}/></div>
+                                            <div className='col-md-6'><input type="text" class="form-control" id="longitude" name='longitude' placeholder="longitude" onChange={this.onChangeValue} /></div>
                                             <div className='col-md-6'><input type="text" class="form-control" id="latitude" name='latitude' placeholder="latitude" onChange={this.onChangeValue} /></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Office Start Date :</label>
                                         <DatePicker
-                                        
-                                        dateFormat="yyyy/MM/dd"
+
+                                            dateFormat="yyyy/MM/dd"
                                             selected={this.state.start}
                                             onChange={this.onClickCalendar}
+                                            style={{ width: '246px', height: '38px' }}
                                         />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Company :</label>
                                         <select class="form-control" id="exampleFormControlSelect1" name='id_company' onChange={this.onChangeValue}>
+                                            <option selected value={0} disabled>
+                                                Choose...
+                                            </option> 
                                             {company.map((company, index) => (
                                                 <option key={index} value={company.id}>
                                                     {company.name}

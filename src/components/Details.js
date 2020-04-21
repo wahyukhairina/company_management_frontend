@@ -5,8 +5,7 @@ import { getCompanyDetails } from '../redux/actions/company'
 import { withRouter, Link } from 'react-router-dom'
 import OfficeList from './OfficeList'
 import "react-datepicker/dist/react-datepicker.css";
-import querystring from "query-string";
-
+import './Details.css'
 class Details extends Component {
 
     state = {
@@ -32,10 +31,6 @@ class Details extends Component {
         this.props.dispatch(getOffice(id))
 
     }
-
-
-
-
 
     render() {
         const { office, detail } = this.props;
@@ -64,10 +59,10 @@ class Details extends Component {
 
                                     <label>Phone No:</label>
                                     <div className='row'>
-                                        <div className='col-md-8'>
+                                        <div className='col-md-10'>
                                             <p className="card-text">{detail.phone}</p>
                                         </div>
-                                        <div className='col-md-4'><Link to="/"><button >Back to Overview</button></Link>
+                                        <div className='col-md-2'><Link to="/"><button className="button-back">Back to Overview</button></Link>
                                         </div>
                                     </div>
                                 </div>

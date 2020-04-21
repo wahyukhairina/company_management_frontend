@@ -1,10 +1,9 @@
 import React from 'react'
-import './Home.css'
 import cross from '../upload/close.png';
 import { connect } from 'react-redux';
 import { deleteOffice } from '../redux/actions/office'
 import { withRouter } from "react-router-dom";
-
+import './Details.css'
 const OfficeList = ({ office, dispatch, }) => {
    const onDelete =  (id) =>  {
      dispatch(deleteOffice(id))
@@ -13,10 +12,10 @@ const OfficeList = ({ office, dispatch, }) => {
   
     return (
         <div className='col-md-4 companies' key={office.id}>
-            <div className="card companies">
+            <div className="card">
                 <div className="card-header">
                 <h5 className="card-title">{office.name}</h5>
-                <button onClick={() => onDelete (office.id)}> <img className="cross-icon" src={cross} alt='delete' /></button> 
+                <button  className="cross-button" onClick={() => onDelete (office.id)}> <img className="cross-icon" src={cross} alt='delete' /></button> 
                 </div>
                 <div className="card-body">
                 <div className="detail">
