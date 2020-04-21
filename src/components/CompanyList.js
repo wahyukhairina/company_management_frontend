@@ -3,22 +3,23 @@ import './Home.css'
 import cross from '../upload/close.png';
 import { connect } from 'react-redux';
 import { deleteCompany } from '../redux/actions/company'
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 const CompanyList = ({ company, dispatch, history }) => {
    const onDelete =  (id) =>  {
      dispatch(deleteCompany(id))
     }
 
-    const onDetails = (id) => {
-        console.log('hi')
-        history.push(`/details/?id=${id}`)
-    }
     return (
         <div className='col-md-4 companies' key={company.id}>
             <div className="card companies">
                 <div className="card-header">
-                <h5 onClick={() => onDetails(company.id)} className="card-title">{company.name}</h5>
+                <Link to={{
+                    pathname: '/details',
+                    state: {
+                        id: company.id
+                    }
+                }} ><h5 className="card-title">{company.name}</h5></Link>
                 <button onClick={() => onDelete (company.id)}> <img className="cross-icon" src={cross} alt='delete' /></button> 
                 </div>
                 <div className="card-body">

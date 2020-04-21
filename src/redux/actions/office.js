@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const getOffice = (id) => {
-  console.log('id action', id)
   return {
     type: 'GET_OFFICE',
     payload: axios({

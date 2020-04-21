@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getOffice } from '../redux/actions/office'
-import { withRouter } from 'react-router-dom'
-import CompanyList from './CompanyList'
+import { getCompanyDetails } from '../redux/actions/company'
+import { withRouter, Link } from 'react-router-dom'
+import OfficeList from './OfficeList'
 import "react-datepicker/dist/react-datepicker.css";
 import querystring from "query-string";
 
@@ -20,35 +21,62 @@ class Details extends Component {
         office_name: '',
     }
 
-    componentDidMount() {
-        this.getOffice()
+    async componentDidMount() {
+        await this.getOffice()
     }
 
-    getOffice () {
-        var q = querystring.parse(this.props.location.search);
+    async getOffice() {
+        var q = this.props.location.state;
         const id = q.id
+        await this.props.dispatch(getCompanyDetails(id))
         this.props.dispatch(getOffice(id))
+
     }
+
+
 
 
 
     render() {
-        var q = querystring.parse(this.props.location.search);
-        console.log('q', q.id)
-        const { company } = this.props;
-        const companylist = company.map(item => (
-            <CompanyList company={item}
-                key={company.id} />
+        const { office, detail } = this.props;
+        const officelist = office.map(item => (
+            <OfficeList office={item}
+                key={office.id} />
         ))
         return (
             <>
                 <div className='container'>
                     <div className='row'>
-                        
+                        <div className="card companies">
+                            <div className="card-header">
+                                <h5 className="card-title">{detail.name}</h5>
+                            </div>
+                            <div className="card-body">
+                                <div className="detail">
+                                    <label>Address</label>
+                                    <p className="card-text">{detail.address}</p>
+                                </div>
+                                <div className="detail">
+                                    <label>Revenue</label>
+                                    <p className="card-text">{detail.revenue}</p>
+                                </div>
+                                <div className="detail">
+
+                                    <label>Phone No:</label>
+                                    <div className='row'>
+                                        <div className='col-md-8'>
+                                            <p className="card-text">{detail.phone}</p>
+                                        </div>
+                                        <div className='col-md-4'><Link to="/"><button >Back to Overview</button></Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className='title'>Companies :</div>
+                    <div className='title'>Offices</div>
                     <div className='row'>
-                        {companylist}
+                        {officelist}
                     </div>
                 </div>
             </>
@@ -58,7 +86,8 @@ class Details extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        company: state.company.company
+        office: state.office.office,
+        detail: state.company.detail
     }
 }
 

@@ -10,6 +10,16 @@ export const getCompany = () => {
   }
 }
 
+export const getCompanyDetails = (id) => {
+  return {
+    type: 'GET_COMPANY_DETAILS',
+    payload: axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/company/${id}`
+    })
+  }
+}
+
 export const postCompany = (data) => {
   return {
     type: 'POST_COMPANY',

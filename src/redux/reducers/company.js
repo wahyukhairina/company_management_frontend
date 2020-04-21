@@ -1,5 +1,6 @@
 const initialState = {
-    company: []
+    company: [],
+    detail : []
   }
   
   const company = (state = initialState, action) => {
@@ -17,6 +18,19 @@ const initialState = {
           ...state,
           company: action.payload.data.result
         }
+        case 'GET_COMPANY_DETAILS_PENDING':
+          return {
+            ...state
+          }
+        case 'GET_COMPANY_DETAILS_REJECTED':
+          return {
+            ...state
+          }
+        case 'GET_COMPANY_DETAILS_FULFILLED':
+          return {
+            ...state,
+            detail: action.payload.data[0]
+          }
       case 'POST_COMPANY_PENDING':
         return {
           ...state

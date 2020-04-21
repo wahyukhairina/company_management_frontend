@@ -25,8 +25,8 @@ class Home extends Component {
         this.getCompany()
     }
 
-    getCompany = async () => {
-        await this.props.dispatch(getCompany())
+    getCompany = () => {
+        this.props.dispatch(getCompany())
     }
 
     onChangeValue = (event) => {
@@ -49,7 +49,6 @@ class Home extends Component {
             latitude : this.state.latitude,
             longitude : this.state.longitude,
         }
-        console.log('data state', data)
         await this.props.dispatch(postOffice(data))
     }
 
