@@ -12,7 +12,7 @@ const CompanyList = ({ company, dispatch }) => {
         <div className='col-md-4 companies' key={company.id}>
             <div className="card companies">
                 <div className="card-header">
-                    <h5 className="card-title">{company.name}</h5>
+                <h5 className="card-title">{company.name}</h5>
                 <button onClick={() => onDelete (company.id)}> <img className="cross-icon" src={cross} alt='delete' /></button> 
                 </div>
                 <div className="card-body">

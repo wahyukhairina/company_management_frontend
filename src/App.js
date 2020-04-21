@@ -11,7 +11,7 @@ function App() {
     <>
       <Provider store={store}>
         <Router>
-          <Route path='/' component={Home} />
+          <Route exact path='/' component={Home} />
           <Route path='/details' component={Details} />
         </Router>
       </Provider>

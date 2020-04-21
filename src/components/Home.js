@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCompany, postCompany } from '../redux/actions/company'
+import { postOffice } from '../redux/actions/office'
 import { withRouter } from 'react-router-dom'
 import CompanyList from './CompanyList'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import './Home.css'
 class Home extends Component {
 
@@ -10,7 +13,12 @@ class Home extends Component {
         name: '',
         address: '',
         revenue: '',
-        phone: ''
+        phone: '',
+        start: new Date(),
+        id_company: '',
+        latitude: '',
+        longitude: '',
+        office_name: '',
     }
 
     componentDidMount() {
@@ -27,7 +35,25 @@ class Home extends Component {
         })
     }
 
-    onSubmit = async (event) => {
+    onClickCalendar = (event) => {
+        this.setState({ start: event })
+        console.log(this.state.start, 'tanggal')
+    };
+    onSubmitOffice = async (event) => {
+        event.preventDefault()
+        event.target.reset()
+        const data = {
+            id_company : this.state.id_company,
+            name : this.state.office_name,
+            start_date : this.state.start,
+            latitude : this.state.latitude,
+            longitude : this.state.longitude,
+        }
+        console.log('data state', data)
+        await this.props.dispatch(postOffice(data))
+    }
+
+    onSubmitCompany = async (event) => {
         event.preventDefault()
         event.target.reset()
         const data = {
@@ -52,17 +78,17 @@ class Home extends Component {
                         <div className="card" style={{ width: '18rem' }}>
                             <div className="card-body">
                                 <h5 className="title">Create Company</h5>
-                                <form onSubmit={this.onSubmit}>
+                                <form onSubmit={this.onSubmitCompany}>
                                     <div class="form-group">
-                                        <label>Name</label>
+                                        <label>Name :</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="name" onChange={this.onChangeValue} />
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
+                                        <label>Address :</label>
                                         <input type="text" class="form-control" id="address" name="address" placeholder="address" onChange={this.onChangeValue} />
                                     </div>
                                     <div class="form-group">
-                                        <label>Revenue</label>
+                                        <label>Revenue :</label>
                                         <input type="text" class="form-control" id="revenue" name="revenue" placeholder="revenue" onChange={this.onChangeValue} />
                                     </div>
                                     <div class="form-group">
@@ -78,25 +104,30 @@ class Home extends Component {
                         <div className="card" style={{ width: '18rem' }}>
                             <div className="card-body">
                                 <h5 className="title">Create Office</h5>
-                                <form >
+                                <form onSubmit={this.onSubmitOffice} >
                                     <div class="form-group">
                                         <label>Name :</label>
-                                        <input type="text" class="form-control" id="name" placeholder="name" />
+                                        <input type="text" class="form-control" id="office_name" name='office_name' placeholder="office name" onChange={this.onChangeValue}/>
                                     </div>
                                     <div class="form-group">
                                         <label>Location :</label>
                                         <div className='row'>
-                                            <div className='col-md-6'><input type="text" class="form-control" id="longitude" placeholder="longitude" /></div>
-                                            <div className='col-md-6'><input type="text" class="form-control" id="latitude" placeholder="latitude" /></div>
+                                            <div className='col-md-6'><input type="text" class="form-control" id="longitude" name='longitude' placeholder="longitude" onChange={this.onChangeValue}/></div>
+                                            <div className='col-md-6'><input type="text" class="form-control" id="latitude" name='latitude' placeholder="latitude" onChange={this.onChangeValue} /></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Office Start Date :</label>
-                                        <input type="text" class="form-control" id="revenue" placeholder="revenue" />
+                                        <DatePicker
+                                        
+                                        dateFormat="yyyy/MM/dd"
+                                            selected={this.state.start}
+                                            onChange={this.onClickCalendar}
+                                        />
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Company</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <label for="exampleFormControlSelect1">Company :</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" name='id_company' onChange={this.onChangeValue}>
                                             {company.map((company, index) => (
                                                 <option key={index} value={company.id}>
                                                     {company.name}
@@ -111,7 +142,7 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className='title'>Companies</div>
+                    <div className='title'>Companies :</div>
                     <div className='row'>
                         {companylist}
                     </div>
@@ -122,7 +153,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('iniiii', state)
     return {
         company: state.company.company
     }
