@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-export const getOffice = () => {
+export const getOffice = (id) => {
+  console.log('id action', id)
   return {
     type: 'GET_OFFICE',
     payload: axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/office`
+      url: `${process.env.REACT_APP_API_URL}/office/${id}`
     })
   }
 }
