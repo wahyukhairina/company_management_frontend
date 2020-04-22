@@ -11,7 +11,11 @@
 <br>
 
 ## Introduction
-[![React](https://img.shields.io/badge/react-v16.12.0-blue)](https://github.com/facebook/react)
+Internal information management system is pretty essential for each company and one of the most
+fundamental parts of the system is the company profile information management, including the
+basic profile of the company as well as the office information under the company.
+This code project is to create a web application to achieve the fundamental functions described above
+in form format. 
 
 
 ## Requirements
