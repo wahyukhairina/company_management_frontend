@@ -1,8 +1,10 @@
 <h1 align='center'>Company Management</h1>
 
 <p align='center'>
-    <img width="800" src='https://user-images.githubusercontent.com/61218212/79936980-56cfc900-848b-11ea-9bf0-c624833a5a33.png' />
+    <p>Page 1</p>
     <img width="800" src='https://user-images.githubusercontent.com/61218212/79937169-c04fd780-848b-11ea-960e-d86ee93ace57.png' />
+    <p>Page 2</p>
+    <img width="800" src='https://user-images.githubusercontent.com/61218212/79936980-56cfc900-848b-11ea-9bf0-c624833a5a33.png' />
 </p>
 
 <br>
@@ -11,7 +13,6 @@
 ## Introduction
 [![React](https://img.shields.io/badge/react-v16.12.0-blue)](https://github.com/facebook/react)
 
-<p align='justify'>GeoChat is an Chat Application with maps feature to track/show the user's friend location near to user's current location. GeoChat was built using React Native and Firebase real-time database.</p>
 
 ## Requirements
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
