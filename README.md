@@ -1,7 +1,7 @@
-<h1 align='center'>Totalin <br>Point of Sales Web Application</h1>
+<h1 align='center'>Company Management</h1>
 
 <p align='center'>
-    <img width="800" src='https://user-images.githubusercontent.com/61218212/78554842-13901c00-7836-11ea-97c2-c7518fb24742.png' />
+    <img width="800" src='https://user-images.githubusercontent.com/61218212/79936980-56cfc900-848b-11ea-9bf0-c624833a5a33.png' />
 </p>
 
 <br>
@@ -23,7 +23,7 @@
 4. Type ` npm start `
 
 ## Visit the Web
-You can visit the web [`here`](http://totalin.s3-website-us-east-1.amazonaws.com/g)
+You can visit the web [`here`](http://companymanagement.s3-website-us-east-1.amazonaws.com/)
 
 ## License
 © [Wahyu Khairina](https://github.com/wahyukhairina/ " Wahyu Khairina")
